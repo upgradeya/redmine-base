@@ -53,5 +53,9 @@ fig run --rm passenger bash -c 'cd /home/app/redmine; (export RAILS_ENV=producti
 echo "Installing backlogs"
 fig run --rm passenger bash -c 'cd /home/app/redmine; (export RAILS_ENV=production && rake redmine:backlogs:install)'
 
+# Create cache directory
+mkdir redmine/tmp/cache
+chmod 777 redmine/tmp/cache
+
 # Restart passenger
 fig up -d
